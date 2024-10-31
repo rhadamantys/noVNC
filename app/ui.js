@@ -333,6 +333,8 @@ const UI = {
             .addEventListener('click', UI.rejectServer);
         document.getElementById("noVNC_credentials_button")
             .addEventListener('click', UI.setCredentials);
+        document.getElementById("noVNC_logout_button")
+            .addEventListener('click', UI.performLogout);
     },
 
     addClipboardHandlers() {
@@ -1205,6 +1207,11 @@ const UI = {
         UI.showStatus(msg, 'error');
     },
 
+    performLogout() {
+        if (UI.connected)
+            UI.disconnect();
+        window.location.replace("/outpost.goauthentik.io/sign_out");
+    },
 /* ------^-------
  *  /CONNECTION
  * ==============
